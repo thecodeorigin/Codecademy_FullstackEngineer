@@ -19,6 +19,9 @@ class App extends React.Component {
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
+    this.savePlaylist = this.savePlaylist.bind(this);
+    this.search = this.search.bind(this);
   }
 
   //Đã check và work
@@ -64,6 +67,19 @@ class App extends React.Component {
     console.log("test xoa track", this.state);
   }
 
+  updatePlaylistName(newName) {
+    this.setState({playlistName: newName});
+  }
+
+  savePlaylist() {
+    const trackURIs = this.state.playlistTracks.map(track => track.uri);
+    console.log(trackURIs)
+  }
+
+  search(searchTerm) {
+    console.log('log searchTerm : ',searchTerm)
+  }
+
   render() {
     return (
       <div>
@@ -71,7 +87,7 @@ class App extends React.Component {
           Ja<span class="highlight">mmm</span>ing
         </h1>
         <div class="App">
-          <SearchBar />
+          <SearchBar  onSearch={this.search}/>
           <div class="App-playlist">
             <SearchResults
               searchResults={this.state.searchResults}
@@ -80,6 +96,9 @@ class App extends React.Component {
             <Playlist
               playlistName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
+              onNameChange={this.updatePlaylistName}
+              onRemove={this.removeTrack}
+              onSave={this.savePlaylist}
             />
           </div>
         </div>
