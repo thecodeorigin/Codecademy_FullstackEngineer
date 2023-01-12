@@ -8,6 +8,7 @@ import {
   samplePlaylistTracks,
   samplePlaylistName,
 } from "./sampleData";
+import Spotify from "../../util/Spotify";
 
 class App extends React.Component {
   constructor(props) {
@@ -77,18 +78,20 @@ class App extends React.Component {
   }
 
   search(searchTerm) {
-    console.log("log searchTerm : ", searchTerm);
+    Spotify.search(searchTerm)
+    // vì kết quả trả về là một promise nên phải then mới xài tiếp result của nó được
+    .then(results => this.setState({ searchResults: results}))
   }
 
   render() {
     return (
       <div>
         <h1>
-          Ja<span class="highlight">mmm</span>ing
+          Ja<span className="highlight">mmm</span>ing
         </h1>
-        <div class="App">
+        <div className="App">
           <SearchBar onSearch={this.search} />
-          <div class="App-playlist">
+          <div className="App-playlist">
             <SearchResults
               searchResults={this.state.searchResults}
               onAdd={this.addTrack}
