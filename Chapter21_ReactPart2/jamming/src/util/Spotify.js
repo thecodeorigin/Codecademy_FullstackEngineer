@@ -1,8 +1,10 @@
 import React from 'react';
-let userAccessToken
+let userAccessToken 
 
 class Spotify extends React.Component {
-
+  getAccessToken() {
+    if(userAccessToken) return userAccessToken
+  }
 
 }
 

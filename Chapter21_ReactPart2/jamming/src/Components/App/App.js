@@ -45,7 +45,7 @@ class App extends React.Component {
     newTrackList.push(track);
     this.setState({ playlistTracks: newTrackList });
   }
-  
+
   //Đã check và work
   removeTrack(track) {
     // check tồn tại track
@@ -68,16 +68,16 @@ class App extends React.Component {
   }
 
   updatePlaylistName(newName) {
-    this.setState({playlistName: newName});
+    this.setState({ playlistName: newName });
   }
 
   savePlaylist() {
-    const trackURIs = this.state.playlistTracks.map(track => track.uri);
-    console.log(trackURIs)
+    const trackURIs = this.state.playlistTracks.map((track) => track.uri);
+    console.log(trackURIs);
   }
 
   search(searchTerm) {
-    console.log('log searchTerm : ',searchTerm)
+    console.log("log searchTerm : ", searchTerm);
   }
 
   render() {
@@ -87,7 +87,7 @@ class App extends React.Component {
           Ja<span class="highlight">mmm</span>ing
         </h1>
         <div class="App">
-          <SearchBar  onSearch={this.search}/>
+          <SearchBar onSearch={this.search} />
           <div class="App-playlist">
             <SearchResults
               searchResults={this.state.searchResults}
